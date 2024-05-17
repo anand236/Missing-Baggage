@@ -1,0 +1,86 @@
+<div class="klm-container">
+    <div class="klm-container--header">
+        Missing Baggage
+    </div>
+
+    <div class="klm-container--mainSection">
+        <div>
+            <form [formGroup]="missingBaggageForm">
+                <div class="journeyDate">
+                    <h2>Journey Date</h2>
+                    <mat-form-field>
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="date" [max]="today" (click)="picker.open()">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+                <div class="journeyFromTo">
+                    <div>
+                        <h2>Origin</h2>
+                        <form class="example-form" [formGroup]="missingBaggageForm">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>From</mat-label>
+                                <input type="text" placeholder="Pick one" aria-label="From" matInput
+                                    formControlName="origin" [matAutocomplete]="auto">
+                                <mat-autocomplete #auto="matAutocomplete">
+                                    <mat-option *ngFor="let option of filteredOptions | async"
+                                        [value]="option">{{option}}</mat-option>
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </form>
+                    </div>
+
+                    <div>
+                        <h2>Destination</h2>
+                        <form class="example-form" [formGroup]="missingBaggageForm">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>To</mat-label>
+                                <input type="text" placeholder="Pick one" aria-label="To" matInput
+                                    formControlName="destination" [matAutocomplete]="auto2" >
+                                <mat-autocomplete #auto2="matAutocomplete">
+                                    <mat-option *ngFor="let option of filteredOptions2 | async"
+                                        [value]="option">{{option}}</mat-option>
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </form>
+                    </div>
+                </div>
+
+                <button mat-raised-button color="primary" (click)="addNewItemsDetail()">Add Missing items</button>
+
+           
+                <div class="missingItems" formArrayName="NoOfItemDetails">
+                    <div *ngFor="let missingItem of NoOfItemDetails.controls; let i=index">
+                        <div [formGroupName]="i">
+
+                            <mat-form-field class="eachItem">
+                                <mat-label>Item name</mat-label>
+                                <input matInput formControlName="item" type="text">
+                            </mat-form-field>
+
+                            <mat-form-field class="eachItem">
+                                <mat-label>Quantity</mat-label>
+                                <input matInput formControlName="quantity" type="number">
+                            </mat-form-field>
+
+                            <mat-form-field class="eachItem">
+                                <mat-label>Estimated Price</mat-label>
+                                <input matInput formControlName="estimatedPrice" type="number">
+                            </mat-form-field>
+
+                            <button mat-raised-button color="primary" (click)="removeItem(i)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="itemAmount">
+                    <h2>Total Claim Amount : {{total}}</h2>
+                </div>
+                <button mat-raised-button color="primary" [disabled]="missingBaggageForm.invalid" (click)="openDialog()">Submit</button>
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+
+.klm-container{
+  
+    &--header{
+   
+        height: 64px;
+        background-color: blue;
+        display: flex;
+        align-items: center;
+        font-size: 25px;
+        font-weight: bold;
+        color: white;
+        padding-left: 10px;
+    }
+
+    &--mainSection{
+        h2{
+            margin-bottom: 0px;
+        }
+        padding-left: 10px;
+        
+        .journeyFromTo{
+            width: 600px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .missingItems{
+            padding: 8px;
+            .eachItem{
+                padding: 8px;
+            }
+        }
+
+        .itemAmount{
+            padding-bottom: 10px;
+        }
+    }
+}
