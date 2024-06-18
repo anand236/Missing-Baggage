@@ -1,0 +1,15 @@
+<div style="margin-top: 20px;">
+    <h1>Ng-Content</h1>
+    <ng-content select=".app"></ng-content>
+    <ng-content select=".app3"></ng-content>
+</div>
+
+
+<ul>
+    <li *ngFor="let item of aquaName;">{{item}}</li>
+</ul>
+<button (click)="btn2()">child Btn clicked</button>
+
+<button (click)="refresh()">Refresh</button>
+
+<h1>{{detectCheck()}}</h1>

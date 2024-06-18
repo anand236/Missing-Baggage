@@ -1,0 +1,95 @@
+<p>ng works!</p>
+
+
+<h1>{{interpolation}}</h1>
+<h1>{{getDynamicValue()}}</h1>
+ <span>input </span><input type="text" [placeholder]=property>
+<br>
+ <button (click)="btn()">Event Binding</button>
+
+<div style="margin-top: 20px;">
+    <h1>Two way data binding</h1>
+    <input type="text" [(ngModel)]="name" placeholder="Enter input">
+    <p>{{name}}</p>  
+</div>
+
+<div style="margin-top: 20px;">
+    <h1>ternary operator</h1>
+    <p>{{ternary ? 'ternary operation executed' : 'Not executed'}}</p>
+</div>
+
+
+<!-- Ng container and ng-template , ng-content -->
+
+<ng-template #uses>
+    <p>Hello world</p>
+</ng-template>
+
+<ng-container *ngTemplateOutlet="uses"></ng-container>
+<ng-container *ngTemplateOutlet="uses"></ng-container>
+<ng-container *ngTemplateOutlet="uses"></ng-container>
+
+<input type="text" #aqName placeholder="enter aqua creature names">
+ <button (click)="updateAqua(aqName.value)">Add Aqua</button>
+
+<!-- // ng content in order to insert the data from parent to child component -->
+
+
+<h1>Change detection strategy</h1>
+
+<h2>{{counter}}</h2>
+<button (click)="Increment()">Increment</button>
+<app-child
+    [updatedName] = name
+    (updated)=updatedNamed($event)
+    [aquaName]="aquaticCreatures"
+>
+    <h1 class="app">Hello im from parent</h1>
+    <h1 class="app1">Hello im from parent1</h1>
+    <h1 class="app2">Hello im from parent2</h1>
+    <h1 class="app3">Hello im from parent3</h1>
+    <h1 class="app4">Hello im from parent4</h1>
+    <h1 class="app5">Hello im from parent5</h1>
+    <h1 class="app6">Hello im from parent6</h1>
+    
+</app-child>
+
+
+<!-- <app-child></app-child> -->
+
+<!-- // ng swith -->
+
+<span [ngSwitch]="">
+<p *ngSwitchCase="true">
+
+</p>
+<p *ngSwitchCase="false">
+
+</p>
+<p *ngSwitchDefault>
+
+</p>
+</span>
+
+<!-- ng swithc  -->
+<div [ngSwitch]="day">
+    <p *ngSwitchCase="0">Sunday</p>
+    <p *ngSwitchCase="1">Monday</p>
+    <p *ngSwitchCase="2">Tuesday</p>
+    <p *ngSwitchCase="3">Wednesday</p>
+    <p *ngSwitchCase="4">Thursday</p>
+    <p *ngSwitchCase="5">Friday</p>
+    <p *ngSwitchCase="6">Saturday</p>
+</div>
+
+<ul>
+    <li *ngFor="let item of data">{{item}}</li>
+</ul>
+
+<button routerLink='/a'>HomeComponent</button>
+
+<h1>{{data$ | async}}</h1>
+
+
+
+

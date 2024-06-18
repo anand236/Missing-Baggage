@@ -23,6 +23,7 @@ import { ConfirmPopupComponent } from '../confirm-popup/confirm-popup.component'
 import { destination, origin } from './location.constants';
 import { LocationService } from '../shared-service/location.service';
 import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -64,7 +65,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject();
 
 
-  constructor(private fb: FormBuilder, public dialog: MatDialog, private service: LocationService) {
+  constructor(private fb: FormBuilder, public dialog: MatDialog, private service: LocationService, private route:Router) {
 
   }
 
@@ -151,6 +152,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       alert('Please add Missing Items')
     }
 
+  }
+
+  logout():void{
+    localStorage.removeItem('userDetails');
+    this.route.navigate(['/login'])
   }
 
   ngOnDestroy(): void {

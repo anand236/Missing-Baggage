@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="container-child">
+        <div class="container-item">
+            <form action="" [formGroup]="form">
+                <h1>Welcome,</h1>
+    
+            <div class="container-item-box">
+                <mat-form-field class="example-full-width">
+                    <mat-label>User name</mat-label>
+                    <input formControlName="username" type="text" matInput>
+                  </mat-form-field>
+            </div>
+    
+    
+            <div class="container-item-box">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Password</mat-label>
+                    <input formControlName="password" type="password" matInput>
+                  </mat-form-field>
+            </div>
+            <button mat-flat-button [disabled]="form.invalid" (click)="submitted()">Submit</button><br>
+            </form>
+            
+        </div>
+    </div>
+</div>
