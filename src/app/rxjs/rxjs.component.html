@@ -1,2 +1,7 @@
 <p>rxjs works!</p>
 <h1>{{count}}</h1>
+
+<input type="text" formControlName ='text' (input)="getInputData($event)">
+
+<button (click)="SunDataEmit()">Subject Emit</button>
+<button (click)="getDataEmit()">get Subject Data</button>

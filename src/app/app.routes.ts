@@ -16,36 +16,36 @@ export const routes: Routes = [
 
     // this is lazy loading it will load the components on demand
 
-    // {path:'a', 
-    //     loadComponent: ()=> import('../app/home/home.component').then((c)=> HomeComponent)
-    // },
-
-    // {
-    //     path:'b',
-    //     loadComponent: ()=> import('./practice/practice.component').then((c)=> PracticeComponent)
-    // },
-    // {
-    //     path:'rxjs',
-    //     loadComponent: ()=> import('./rxjs/rxjs.component').then((c)=> RxjsComponent)
-    // },
-    // {
-    //     path:'',
-    //     loadComponent:()=> import('./ng/ng.component').then((c)=> NgComponent)
-    // }
+    {path:'a', 
+        loadComponent: ()=> import('../app/home/home.component').then((c)=> HomeComponent)
+    },
 
     {
-        path:'', redirectTo:'login', pathMatch:'full'
+        path:'b',
+        loadComponent: ()=> import('./practice/practice.component').then((c)=> PracticeComponent)
     },
     {
-        path:'login', 
-       
-        component:LoginComponent
+        path:'',
+        loadComponent: ()=> import('./rxjs/rxjs.component').then((c)=> RxjsComponent)
     },
     {
-        path:'login/home',
-        canActivate:[authGuard], component:HomeComponent
-    },
-    {
-        path:'**', component:NotFoundComponent
+        path:'n',
+        loadComponent:()=> import('./ng/ng.component').then((c)=> NgComponent)
     }
+
+    // {
+    //     path:'', redirectTo:'login', pathMatch:'full'
+    // },
+    // {
+    //     path:'login', 
+       
+    //     component:LoginComponent
+    // },
+    // {
+    //     path:'login/home',
+    //     canActivate:[authGuard], component:HomeComponent
+    // },
+    // {
+    //     path:'**', component:NotFoundComponent
+    // }
 ];

@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -9,7 +10,6 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./practice.component.scss'],
 })
 export class PracticeComponent implements OnInit {
-  private age!: number;
   private glob = 5;
 
   constructor() {}
@@ -270,7 +270,7 @@ export class PracticeComponent implements OnInit {
     named();
   }
 
-  //  typescript practise
+  //  ==================================== typescript practise
   if() {
     let tname: string = 'Anand'; // ---> explicit type defining the type
     let tname2 = 'ANand'; // ---> implicit type means typescript defines the type
