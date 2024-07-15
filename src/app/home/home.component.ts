@@ -16,7 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
-import { Observable, Subject, map, startWith, takeUntil } from 'rxjs';
+import { Observable, Subject, debounce, debounceTime, interval, map, startWith, takeUntil } from 'rxjs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 import { ConfirmPopupComponent } from '../confirm-popup/confirm-popup.component';
@@ -90,11 +90,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.filteredOptions = this.missingBaggageForm.get('origin')?.valueChanges.pipe(
       startWith(''),
       map(value => this._filterOrigin(value || '')),
+      debounceTime(500)
     );
 
+    let intTime = 100;
     this.filteredOptions2 = this.missingBaggageForm.get('destination')?.valueChanges.pipe(
       startWith(''),
       map(value => this._filterDestination(value || '')),
+      debounce((res)=>{
+        intTime+= 100;
+        return interval(intTime)
+      })
     );
 
 
